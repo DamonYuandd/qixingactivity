@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>编辑内容</title>
+<layout name="Inc:edit_page" cache="0" />
+<layout name="Inc:ueditor" cache="0" />
+
+</head>
+<body>
+<div class="nav-site">{~getNavSite($nav_site,$_GET['cid'])} > 编辑内容</div>
+<form action="__APP__/Admin/Index/updateChannel" method="post" enctype="multipart/form-data" class="form">  
+ 
+   <fieldset>
+       <ul class="align-list">
+           <li>
+               <label>中原骑行路线</label>
+               <volist name="zyChannel" id="vo" key="i">
+                    <input name="zy_num" type="radio" value="{$i}" <eq name="data['zy_num']" value="$i" >checked="true"</eq> /> {$vo}&nbsp;&nbsp;
+               </volist>
+           </li>
+           <li>
+               <label>中原骑行天数</label>
+               <input name="zy_day" type="text" value="{$data['zy_day']}"  class="type-text"  />
+           </li>
+           <li>
+               <label>中原骑行公里</label>
+               <input name="zy_kilometre" type="text" value="{$data['zy_kilometre']}"  class="type-text"  />
+           </li>
+            <li>
+               <label>&nbsp;&nbsp;</label>
+               
+           </li>
+           <li>
+               <label>沿海骑行路线</label>
+               <volist name="yhChannel" id="vo" key="i">
+                    <input name="yh_num" type="radio" value="{$i}" <eq name="data['yh_num']" value="$i" >checked="true"</eq> /> {$vo}&nbsp;&nbsp;
+               </volist>
+           </li>
+           <li>
+               <label>沿海骑行天数</label>
+               <input name="yh_day" type="text" value="{$data['yh_day']}"  class="type-text"  />
+           </li>
+           <li>
+               <label>沿海骑行公里</label>
+               <input name="yh_kilometre" type="text" value="{$data['yh_kilometre']}"  class="type-text"  />
+           </li>
+           <li>
+               <label></label>
+               <input type="submit" value="确定并保存" name="save" class="button button-green button-big" />
+               <input type="button" value="返回列表" onclick="javascript:history.go(-1);" class="button button-big" />
+            </li>
+        </ul>
+    </fieldset>
+</form>
+
+<layout name="Inc:edit_seo_option" cache="0" />
+
+</body>
+</html>

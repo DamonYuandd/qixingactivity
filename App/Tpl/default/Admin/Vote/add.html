@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>编辑内容</title>
+<layout name="Inc:edit_page" cache="0" />
+<layout name="Inc:ueditor" cache="0" />
+
+</head>
+<body>
+<div class="nav-site">{~getNavSite($nav_site,$_GET['cid'])} > 编辑内容</div>
+<form action="__APP__/Admin/Vote/addVote" method="post" enctype="multipart/form-data" class="form">  
+	<input type="hidden" id="id" name="id" value="{$obj.id}">
+
+   <fieldset>
+       <ul class="align-list">
+       	 
+           <li>
+               <label>作者姓名</label>
+               <input type="text" id="name" name="name" value="{$obj.name}" class="type-text">
+           </li>
+           <li>
+               <label>封面图</label>
+			   <input type="file" name="image" />
+           </li>
+           <li>
+               <label>正文描述</label>
+               <textarea id="content" name="content" style="margin-left:200px;margin-left: 140px;margin-top: -25px;margin-bottom: 10px;">{$obj.content|htmlspecialchars_decode}</textarea>
+           	   <script type="text/javascript">
+				    var editor = new baidu.editor.ui.Editor();
+				    editor.render("content");
+				</script>
+		   </li>
+           <li>
+               <label></label>
+               <input type="submit" value="确定"  class="button button-green button-big" />
+               <input type="button" value="返回列表" onclick="javascript:history.go(-1);" class="button button-big" />
+            </li>
+        </ul>
+    </fieldset>
+</form>
+
+<layout name="Inc:edit_seo_option" cache="0" />
+
+</body>
+</html>
